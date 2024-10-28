@@ -1,0 +1,24 @@
+<resources>
+
+    <string name="app_name">NfcSample</string>
+
+    <!--main screen-->
+    <string name="read_data_label">Чтение данных</string>
+    <string name="write_data_label">Запись данных</string>
+    <string name="remove_data_label">Удаление данных</string>
+    <string name="empty_nfc_screen_data">Метка пуста</string>
+    <string name="clear_tag_screen_label">Поднесите метку что бы очистить</string>
+    <string name="dialog_clear_data_title">Вы действительно хотите очистить метку?</string>
+    <string name="dialog_positive_button_label">Да</string>
+    <string name="dialog_negative_button_label">Нет</string>
+    <string name="cleared_successfully">успешно очищено</string>
+    <string name="wrote_successfully">успешно записано</string>
+    <string name="error_writing_tag_data_label">Произошла ошибка во время записи. Попробуйте еще раз</string>
+    <string name="tag_not_writable_label">Метка не предназначена для записи</string>
+    <string name="tag_not_connected_label">Метка не подключена. Попробуйте еще раз</string>
+    <string name="tag_too_much_data_label">Сообщение очень длинное</string>
+    <!--read data screen-->
+    <string name="tag_data_label">Данные  записанные на метку</string>
+    <string name="pending_tag_data_label">Данные  ожидающие записи на метку</string>
+    <string name="idle_screen_label">Поднесите метку к тыльной стороне телефона</string>
+</resources>
