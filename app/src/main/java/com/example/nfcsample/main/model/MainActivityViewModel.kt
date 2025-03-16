@@ -21,9 +21,12 @@ import kotlinx.coroutines.withContext
 
 class MainActivityViewModel : ViewModel() {
     private val tokenReader: TokenReader = NfcTokenReader()
-    private val tokenWriter: TokenWriter = NfcTokenWriter(tokenReader,
+    private val tokenWriter: TokenWriter = NfcTokenWriter(
+        tokenReader,
         onClearData = { nfcTokenData.clear() },
-        onSetScreenBarState = { screenState = it },
+        onSetScreenBarState = { state ->
+            screenState = state
+        },
         onDismissClearedState = { shouldClearData = it },
         onSetSnackBarState = { snackBarType = it },
         onAddOldData = {

@@ -121,26 +121,28 @@ class MainActivity : ComponentActivity() {
                     }
                 )
 
-                Box(
-                    modifier = Modifier
-                        .padding(end = 16.dp, bottom = 60.dp)
-                        .background(
-                            color = Color.Cyan,
-                            shape = CircleShape
+                if (viewModel.screenState != NfcRearedScreenState.CLEAR) {
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 16.dp, bottom = 60.dp)
+                            .background(
+                                color = Color.Cyan,
+                                shape = CircleShape
+                            )
+                            .size(54.dp)
+                            .clip(CircleShape)
+                            .clickable {
+                                viewModel.onFabButtonClicked()
+                            }
+                            .align(Alignment.BottomEnd)
+                    ) {
+                        Icon(
+                            modifier = Modifier.align(Alignment.Center),
+                            painter = painterResource(R.drawable.ic_add),
+                            tint = Color.White,
+                            contentDescription = null
                         )
-                        .size(54.dp)
-                        .clip(CircleShape)
-                        .clickable {
-                            viewModel.onFabButtonClicked()
-                        }
-                        .align(Alignment.BottomEnd)
-                ) {
-                    Icon(
-                        modifier = Modifier.align(Alignment.Center),
-                        painter = painterResource(R.drawable.ic_add),
-                        tint = Color.White,
-                        contentDescription = null
-                    )
+                    }
                 }
             }
             if (viewModel.isBottomSheetVisible) {
@@ -203,9 +205,7 @@ class MainActivity : ComponentActivity() {
             LaunchedEffect(viewModel.snackBarType) {
                 if (viewModel.snackBarType != SnackBarMessageType.NONE) {
                     coroutineScope.launch(Dispatchers.Main) {
-                        val snack = viewModel.snackBarHostState.showSnackbar(
-                            snackBarString
-                        )
+                        val snack = viewModel.snackBarHostState.showSnackbar(snackBarString)
 
                         if (snack == SnackbarResult.Dismissed) {
                             viewModel.onClearSnackBarMessageType()

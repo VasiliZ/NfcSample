@@ -54,14 +54,13 @@ class NfcTokenWriter(
                 }
             }
         }
-        writeMessage(newNdef, tag, shouldClearData, nfcTokenData)
+        writeMessage(newNdef, tag, shouldClearData)
     }
 
     private suspend fun writeMessage(
         message: Array<NdefRecord>,
         tag: Tag? = null,
         shouldClearData: Boolean,
-        nfcTokenData: List<NfcModelPresentation>,
     ) {
         val ndefTag = Ndef.get(tag)
 
@@ -112,10 +111,10 @@ class NfcTokenWriter(
                     }
 
                     withContext(Dispatchers.Main) {
-
                         when {
                             shouldClearData -> {
                                 onClearData()
+                                oldTagData.clear()
                                 onSetScreenBarState(NfcRearedScreenState.EMPTY)
                                 onSetSnackBarState(SnackBarMessageType.CLEARED)
                                 onDismissClearedState(false)

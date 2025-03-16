@@ -34,5 +34,4 @@ class NfcTokenReader : TokenReader {
 
         return savedMessages
     }
-
 }
